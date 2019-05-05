@@ -1,0 +1,87 @@
+<template>
+    <div class="newp">
+       <div class="newplayitem" v-for="item in newplayList" :key="item.id">
+		 <div class="content">
+            <img :src="item.img | setWH('70.100')">
+		    <h4> {{ item.nm }}<img src="@/assets/3d.png" v-if="item.globalReleased"></h4>
+		    <p class="audio">观众评 <span>{{ item.sc }}</span></p>
+		    <p class="strring"> {{ item.star }}</p>
+		    <p class="tody"> {{ item.showInfo }}</p>
+         </div>
+		 <a href="javascript:;">购票</a>
+	 </div>
+    </div>
+</template>
+
+<script>
+    export default {
+        data(){
+            return{
+                newplayList:[]
+            }
+        },
+        created(){
+            this.axios.get('api/movieOnInfoList?cityId=10').then(res=>{
+                if(res.data.msg === 'ok'){
+                   this.newplayList = res.data.data.movieList;
+                }
+            })
+        },
+    }
+</script>
+
+<style lang="scss" scoped>
+.newp{
+    margin: 5.625rem 0 5.625rem 0;
+}
+.newplayitem{
+     padding: 0.9375rem;
+     position: relative;
+     border-bottom: 1px solid #ccc;
+}
+.content{
+    width: 18.75rem;
+    height: 6.25rem;
+}
+ .newplayitem img{
+     margin-right: 0.5rem;
+    //  width: 5rem;
+     float: left;
+}
+ .newplayitem h4{
+     position: relative;
+     color: black;
+     font-size: 1rem;
+}
+.newplayitem h4 img{
+    width: 2.6875rem;
+    position: absolute;
+    right: 0;
+    top: .3125rem;
+}
+ .newplayitem .audio,.newplayitem .tody,.newplayitem .strring{
+     font-size: .75rem;
+     font-weight: 600;
+     color: #a3a2a3;
+     overflow: hidden;
+     white-space: nowrap;
+     text-overflow: ellipsis;
+     margin-top: 0.5rem;
+}
+ .newplayitem span{
+     font-size: 1.0625rem;
+     color: #f76f12 ;
+     font-weight: bolder;
+}
+ .newplayitem a{
+     text-decoration: none;
+     color: white;
+     padding: 0.3125rem;
+     right: 1.25rem;
+     bottom: 1.25rem;
+     border-radius: 0.3125rem;
+     position: absolute;
+     background-color: #ff4e39;
+}
+ 
+</style>
