@@ -3,7 +3,7 @@
     <headers/>
     <div class="top">
       <router-link tag="div" to="/movies/address" class="address">
-        大连
+        武汉
         <i class="iconfont icon-xiala"></i>
       </router-link>
       <router-link tag="div" to="/movies/newplay" class="newplay">正在热映</router-link>

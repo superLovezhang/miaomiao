@@ -32,7 +32,7 @@
 
 <style lang="scss" scoped>
 .com{
-    margin: 5.625rem 0 5.625rem 0;
+    margin: 5.625rem 0 3.125rem 0;
 }
 .commingitem{
      padding: 0.9375rem;
