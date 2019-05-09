@@ -1,0 +1,23 @@
+[33mcommit 28da56880a5f5bd043ad58e9b3822e63e5fa949d[m[33m ([m[1;36mHEAD -> [m[1;32mnewbranch[m[33m, [m[1;31morigin/newbranch[m[33m, [m[1;31morigin/dev[m[33m, [m[1;32mdev[m[33m)[m
+Author: Zhang Zhao <2321885538@qq.com>
+Date:   Sun May 5 22:09:15 2019 +0800
+
+    对三个界面初步完善
+
+[33mcommit 9e54ede38f41919c193a7660707f080fdf9bf736[m
+Author: Zhang Zhao <2321885538@qq.com>
+Date:   Sun May 5 18:19:23 2019 +0800
+
+    主框架
+
+[33mcommit 7c8a97cf3f40c6ed9c919c383870b8ac2631a1b2[m
+Author: Zhang Zhao <2321885538@qq.com>
+Date:   Sun May 5 18:16:54 2019 +0800
+
+    add dev
+
+[33mcommit 2208d785f2ef93d5b578068dd7751c81964dbf35[m[33m ([m[1;31morigin/master[m[33m, [m[1;32mmaster[m[33m)[m
+Author: Zhang Zhao <2321885538@qq.com>
+Date:   Sat May 4 22:52:56 2019 +0800
+
+    init

@@ -2,8 +2,8 @@
   <div>
     <headers/>
     <div class="Cinematop">
-      <div class="city cinema_active">
-        全城
+      <div class="city">
+        {{ this.$store.state.address.nm }}
         <i class="iconfont icon-xiala"></i>
       </div>
       <div class="brand">
@@ -35,14 +35,18 @@ export default {
 
 <style lang="scss" scoped>
 .Cinematop {
-  margin-top: 3.125rem;
+  // margin-top: 3.125rem;
   width: 100%;
   height: 2.5rem;
   display: flex;
+  position: fixed;
   font-weight: 800;
   text-align: center;
   line-height: 2.5rem;
+  z-index: 10;
+  top: 3.125rem;
   color: #333;
+  background-color: white;
   border-bottom: 0.0625rem solid #ccc;
 }
 .city {

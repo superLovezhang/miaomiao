@@ -3,7 +3,7 @@
     <headers/>
     <div class="top">
       <router-link tag="div" to="/movies/address" class="address">
-        武汉
+        {{ $store.state.address.nm }}
         <i class="iconfont icon-xiala"></i>
       </router-link>
       <router-link tag="div" to="/movies/newplay" class="newplay">正在热映</router-link>
@@ -12,8 +12,10 @@
         <i class="iconfont icon-search"></i>
       </router-link>
     </div>
-    <router-view></router-view>
-    <tabbar class='down'/>
+    <keep-alive>
+        <router-view/>
+    </keep-alive>
+    <tabbar/>
   </div>
 </template>
 
@@ -24,7 +26,12 @@ export default {
   components: {
     tabbar,
     headers
-  }
+  },
+  data(){
+    return{
+
+    }
+  },
 };
 </script>
 
