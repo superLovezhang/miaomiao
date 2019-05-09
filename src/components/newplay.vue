@@ -27,46 +27,50 @@
 
 <script>
 import BScroll from "better-scroll";
-import {fun as message} from '@/components/JS'
+import { fun as message } from "@/components/JS";
 export default {
   data() {
     return {
       newplayList: [],
       update: "",
       flag: true,
-      thisID:-1
+      thisID: -1
     };
   },
-  created(){
-     message({ 
-       title:'定位',
-       city:'瑞昌',
-       cancle:'取消',
-       ok:'切换定位',
-       handleCancle: function () { },
-       handleOk: function () { }
-      })
+  created() {
+    this.axios.get("/api/getLocation").then(res => {
+      var nm = res.data.data.nm;
+      var id = res.data.data.id;
+      if (res.data.msg === "ok") {
+        if(this.$store.state.address.nm == nm){return ;}
+        message({
+          title: "定位",
+          city: nm,
+          cancle: "取消",
+          ok: "切换定位",
+          handleOk: function() {
+            window.localStorage.setItem('localNM',nm);
+            window.localStorage.setItem('localID',id);
+            window.location.reload();
+          }
+        });
+      }
+    });
   },
   beforeRouteUpdate(to, from, next) {},
   activated() {
-    // this.axios.get("api/movieOnInfoList?cityId="+this.$store.state.address.id).then(res => {
-    //   if (res.data.msg === "ok") {
-    //     this.newplayList = res.data.data.movieList;
-    //     this.flag = false;
-    //   }
-    // });
     var newsID = this.$store.state.address.id;
-    
-    if(this.thisID === newsID){
+
+    if (this.thisID === newsID) {
+    } else {
+      this.axios.get("api/movieOnInfoList?cityId=" + newsID).then(res => {
+        if (res.data.msg === "ok") {
+          this.newplayList = res.data.data.movieList;
+          this.flag = false;
+          this.thisID = newsID;
+        }
+      });
     }
-    else{
-    this.axios.get("api/movieOnInfoList?cityId=" + newsID).then(res => {
-          if (res.data.msg === "ok") {
-            this.newplayList = res.data.data.movieList;
-            this.flag = false;
-            this.thisID = newsID; 
-          }
-      });    }
   },
   methods: {
     Handleupdate(pos) {
@@ -86,7 +90,7 @@ export default {
           }
         });
       }
-    },
+    }
   }
 };
 </script>
