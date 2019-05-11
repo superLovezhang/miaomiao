@@ -38,6 +38,7 @@
      font-size: 0.8rem;
      color: #272121;
      font-weight: 800;
+     z-index: 111;
      border-top: 0.125rem #ccc solid;
      display: flex;
 }

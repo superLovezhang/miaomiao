@@ -6,7 +6,7 @@
         <loading v-if="flag"></loading>
         <div v-else class="newplayitem" v-for="item in newplayList" :key="item.id">
           <div class="content">
-            <img :src="item.img | setWH('70.100')">
+            <img :src="item.img | setWH('70.100')" @tap="Todetail(item.id)">
             <h4>
               {{ item.nm }}
               <img src="@/assets/3d.png" v-if="item.globalReleased">
@@ -90,6 +90,9 @@ export default {
           }
         });
       }
+    },
+    Todetail(id){
+      this.$router.push('/movies/1/detail/'+id)   
     }
   }
 };

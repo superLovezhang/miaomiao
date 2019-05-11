@@ -13,6 +13,7 @@
 			 <div class="content">
                 <h4> {{ item.nm }}<span> {{ item.sc }}</span></h4>
 			    <p class="audio"> {{ item.enm }} </p>
+                <p class="cat">{{ item.cat }}</p>
 			    <p class="strring"> {{ item.star }}</p>
 			    <p class="tody"> {{ item.pubDesc }}</p>
              </div>
@@ -44,6 +45,7 @@ import { clearTimeout, setTimeout } from 'timers';
                 this.timer = setTimeout(()=>{
                     this.axios.get('/api/searchList?cityId=10&kw='+value).then(res=>{
                     if(res.data.msg === 'ok'){
+                    this.flag = false;
                     this.searchResult = res.data.data.movies.list;
                 }
               }).catch(()=>{
@@ -122,15 +124,15 @@ input{
      position: absolute;
      right: .625rem;
 }
- .search_movies .audio,.search_movies .strring,.search_movies .tody{
+ .search_movies .audio,.search_movies .strring,.search_movies .tody,.search_movies .cat{
      font-size: .75rem;
      font-weight: 600;
      color: #a3a2a3;
-     overflow: hidden;
      width: 13.75rem;
+     overflow: hidden;
      white-space: nowrap;
      text-overflow: ellipsis;
-     margin-top: 0.5rem;
+     margin-top: 0.3rem;
 }
 .warrning{
     font-weight: 800;

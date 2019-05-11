@@ -5,7 +5,7 @@
       <div class="com">
         <div class="commingitem" v-for="item in commingList" :key="item.id">
           <div class="content">
-            <img :src="item.img | setWH('70.100')">
+            <img :src="item.img | setWH('70.100')" @touchstart="Todetail(item.id)">
             <h4>
               {{ item.nm }}
               <img src="@/assets/3d.png" v-if="item.globalReleased">
@@ -42,6 +42,11 @@ export default {
         this.thisID = newsID;
       }
     });  }
+  },
+  methods:{
+    Todetail(id){
+      this.$router.push('/movies/2/detail/'+id)   
+    }
   }
 };
 </script>
