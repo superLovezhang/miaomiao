@@ -3,6 +3,7 @@
     <headers/>
     <login class="logins"/>
     <tabbar/>
+    <router-view></router-view>
   </div>
 </template>
 

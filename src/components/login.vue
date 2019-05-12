@@ -1,19 +1,31 @@
 <template>
   <div class="loginBox">
-    <input type="text" placeholder="账户名/手机号/Email">
-    <input type="password" placeholder="请输入您的密码">
+    <input type="text" placeholder="账户名/手机号/Email" v-model="user">
+    <input type="password" placeholder="请输入您的密码" v-model="passward">
     <div class="login">
-      <a href="javascript:;">登录</a>
+      <a href="javascript:;" @click="handleToLogin">登录</a>
     </div>
     <p class="login_down">
-      <a href="javascript:;">立即注册</a>
+      <router-link tag="a" to="mine/register">立即注册</router-link>
       <a href="javascript:;">忘记密码</a>
     </p>
   </div>
 </template>
 
 <script>
-export default {};
+export default {
+  data(){
+    return{
+      user:'',
+      passward:''
+    }
+  },
+  methods:{
+    handleToLogin(){
+      
+    }
+  }
+};
 </script>
 
 <style lang="scss" scoped>
