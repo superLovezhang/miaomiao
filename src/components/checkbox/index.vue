@@ -1,6 +1,10 @@
 <template>
   <div class="checkBox" :style="{'color': colors }">
-    <input type="checkbox" id="checkOne" :style="{'width': widths, 'height': heights }">
+    <input
+      type="checkbox"
+      id="checkOne"
+      :style="{'width': widths, 'height': heights }"
+    >
     <label for="checkOne" class="lab" :style="{'width': widths, 'height': heights }"></label>
     <slot></slot>
   </div>
@@ -17,14 +21,17 @@ export default {
     },
     colors: {
       default: "blue"
-    }
+    },
+    re_user: {},
+    re_passward: {},
+    re_passwards: {}
   },
   data() {
     return {
       width: this.widths,
       height: this.heights
     };
-  }
+  },
 };
 </script>
 

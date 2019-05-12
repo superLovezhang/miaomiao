@@ -4,12 +4,15 @@
     <el-input placeholder="请输入内容" v-model="re_user" clearable class="input1"></el-input>
     <el-input placeholder="请输入密码" v-model="re_passward" show-password class="input2"></el-input>
     <el-input placeholder="请再次输入密码" v-model="re_passwards" show-password class="input3"></el-input>
-    <!-- <el-checkbox v-model="checked" class="input4" >我已阅读并同意《喵喵网用户协议》</el-checkbox> -->
-    <checkbox widths="20px" heights="20px" class="gous">
+    <checkbox 
+    widths="20px"
+    heights="20px"
+    class="gous"
+    >
       <span class="slots">我已阅读并同意《喵喵网用户协议》</span>
     </checkbox>
     <div class="button">
-      <el-button type="danger">注册</el-button>
+      <el-button type="danger"  @click="handlePassward">注册</el-button>
     </div>
   </div>
 </template>
@@ -25,9 +28,25 @@ export default {
       re_user: "",
       re_passward: "",
       re_passwards: "",
-      checked: false
     };
   },
+  methods: {
+    handlePassward() {
+      var userDate = {userList:[] };
+      if (this.re_user && this.re_passward && this.re_passwards) {
+        if (this.re_passward === this.re_passwards) {
+            alert('注册成功！');
+            userDate.userList.push({ 'userName':this.re_user,'userPassward':this.re_passward });
+            window.localStorage.setItem('userDate',JSON.stringify(userDate));
+            this.$router.push('/mine');
+        } else {
+          alert("两次密码不一致！请重新输入！");
+        }
+      } else {
+        alert("用户名或密码必须填写！");
+      }
+    }
+  }
 };
 </script>
 
@@ -63,7 +82,7 @@ export default {
   margin-top: 0.625rem;
 }
 .input1 {
-  margin: 0;
+  margin-top: 3.125rem;
 }
 
 .button {
