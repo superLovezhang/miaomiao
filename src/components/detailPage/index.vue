@@ -6,29 +6,34 @@
       </p>
     </div>
     <div class="detailItem">
-      <div class="detailBox" :style="{ 'background-image' : 'url('+detailList.img.replace(/w\.h/,'148.230')+')'}"></div>
-      <div class="search_movies">
-        <img :src="detailList.img | setWH('100.150')">
-        <div class="content">
-          <h4>{{ detailList.nm }}</h4>
-          <p class="audio">{{ detailList.enm }}</p>
-          <p class="sore">{{ detailList.sc }}</p>
-          <p class="cat">{{ detailList.cat }}</p>
-          <p class="strring">{{ detailList.star }}</p>
-          <p class="tody">{{ detailList.frt }}</p>
+      <scroller>
+        <div
+          class="detailBox"
+          :style="{ 'background-image' : 'url('+detailList.img.replace(/w\.h/,'148.230')+')'}"
+        ></div>
+        <div class="search_movies">
+          <img :src="detailList.img | setWH('100.150')">
+          <div class="content">
+            <h4>{{ detailList.nm }}</h4>
+            <p class="audio">{{ detailList.enm }}</p>
+            <p class="sore">{{ detailList.sc }}</p>
+            <p class="cat">{{ detailList.cat }}</p>
+            <p class="strring">{{ detailList.star }}</p>
+            <p class="tody">{{ detailList.frt }}</p>
+          </div>
         </div>
-      </div>
-      <div class="introduction">
-        <p>{{ detailList.dra }}</p>
-      </div>
-      <div class="swiper-container swiper"  ref="actor">
-        <ul class="actor swiper-wrapper">
-          <li v-for="item in detailList.photos" :key="item" class='swiper-slide'>
-            <img :src="item | setWH('130.130')">
-            <p class="actorName">大卫·雷奇</p>
-          </li>
-        </ul>
-      </div>
+        <div class="introduction">
+          <p>{{ detailList.dra }}</p>
+        </div>
+        <div class="swiper-container swiper" ref="actor">
+          <ul class="actor swiper-wrapper">
+            <li v-for="item in detailList.photos" :key="item" class="swiper-slide">
+              <img :src="item | setWH('130.130')">
+              <p class="actorName">大卫·雷奇</p>
+            </li>
+          </ul>
+        </div>
+      </scroller>
     </div>
   </div>
 </template>
@@ -102,6 +107,10 @@ export default {
   font-size: 20px;
   background-color: #ff4e39;
 }
+.detailItem {
+  width: 100%;
+  height: 32.8125rem;
+}
 .detailBox {
   position: absolute;
   top: 0rem;
@@ -118,7 +127,7 @@ export default {
   padding: 0.9375rem;
   position: relative;
   display: flex;
-  background-color: rgba(0, 0, 0,.4);
+  background-color: rgba(0, 0, 0, 0.4);
   justify-content: space-between;
   border-bottom: 0.0625rem solid #ccc;
 }
@@ -164,11 +173,11 @@ export default {
 .introduction {
   padding: 1.25rem;
 }
-.swiper{
-  width:100%;
+.swiper {
+  width: 100%;
   border: 1px solid #ccc;
 }
-.swiper-slide{
+.swiper-slide {
   width: 130px;
 }
 .actor {
@@ -187,7 +196,7 @@ export default {
   font-size: 0.8125rem;
   text-align: center;
 }
-.actor img{
+.actor img {
   width: 130px;
   height: 69px;
 }

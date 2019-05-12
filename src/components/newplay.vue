@@ -63,7 +63,7 @@ export default {
 
     if (this.thisID === newsID) {
     } else {
-      this.axios.get("api/movieOnInfoList?cityId=" + newsID).then(res => {
+      this.axios.get("/api/movieOnInfoList?cityId=" + newsID).then(res => {
         if (res.data.msg === "ok") {
           this.newplayList = res.data.data.movieList;
           this.flag = false;
@@ -81,7 +81,7 @@ export default {
     Handleupdated(pos) {
       if (pos.y > 60) {
         this.update = "更新完毕";
-        this.axios.get("api/movieOnInfoList?cityId=15").then(res => {
+        this.axios.get("/api/movieOnInfoList?cityId=15").then(res => {
           if (res.data.msg === "ok") {
             setTimeout(() => {
               this.newplayList = res.data.data.movieList;

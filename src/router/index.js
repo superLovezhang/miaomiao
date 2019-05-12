@@ -9,6 +9,8 @@ Vue.use(Router)
 
 
 export default new Router({
+  mode:'history',
+  base:'miaomiao',
   routes: [
       {path:'/', redirect:'/movies'},
       movies,
