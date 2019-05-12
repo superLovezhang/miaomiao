@@ -11,6 +11,9 @@ Vue.component('scroller',scroller)
 import loading from '@/components/loading'
 Vue.component('loading',loading)
 
+import goBack from '@/components/goBack';
+Vue.component('goBack',goBack)
+
 Vue.filter('setWH',function(value,input){
   return value.replace(/w\.h/,input)
 })

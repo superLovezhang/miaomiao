@@ -1,10 +1,6 @@
 <template>
   <div class="detailPage">
-    <div class="header">
-      <p>
-        <i class="iconfont icon-left" @touchstart="goback"></i>喵喵影院
-      </p>
-    </div>
+    <goBack></goBack>
     <div class="detailItem">
       <scroller>
         <div
@@ -62,11 +58,6 @@ export default {
     });
     console.log(this.id);
   },
-  methods: {
-    goback() {
-      this.$router.go(-1);
-    }
-  }
 };
 </script>
 
@@ -89,23 +80,6 @@ export default {
   to {
     transform: translate(0);
   }
-}
-.icon-left {
-  font-size: 1.25rem;
-  position: absolute;
-  left: 0.5rem;
-}
-.header {
-  position: fixed;
-  z-index: 111;
-  top: 0;
-  width: 100%;
-  height: 50px;
-  text-align: center;
-  line-height: 50px;
-  color: white;
-  font-size: 20px;
-  background-color: #ff4e39;
 }
 .detailItem {
   width: 100%;
