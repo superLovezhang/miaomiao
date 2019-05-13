@@ -4,6 +4,7 @@ import Vuex from 'vuex'
 Vue.use(Vuex)
 
 import address from './address'
+import checkBox from './checkBox'
 
 export default new Vuex.Store({
   state: {
@@ -16,6 +17,7 @@ export default new Vuex.Store({
 
   },
   modules:{
-    address
+    address,
+    checkBox
   }
 })

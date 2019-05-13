@@ -3,6 +3,8 @@
     <input
       type="checkbox"
       id="checkOne"
+      @click="handleToGou"
+      ref="checkBoxItem"
       :style="{'width': widths, 'height': heights }"
     >
     <label for="checkOne" class="lab" :style="{'width': widths, 'height': heights }"></label>
@@ -32,6 +34,11 @@ export default {
       height: this.heights
     };
   },
+  methods:{
+    handleToGou(){
+      this.$store.state.checkBox.isChecked = this.$refs.checkBoxItem.checked;
+    }
+  }
 };
 </script>
 
