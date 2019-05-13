@@ -28,9 +28,11 @@ export default {
   },
   methods: {
     handlePassward() {
-      var localUser = JSON.parse(window.localStorage.getItem("userDate")).userList;
       var userDate = { userList: [] };
-      if (this.re_user && this.re_passward && this.re_passwards) {
+      //如果有缓存
+      if(JSON.parse(window.localStorage.getItem("userDate"))){
+        var localUser = JSON.parse(window.localStorage.getItem("userDate")).userList;
+        if (this.re_user && this.re_passward && this.re_passwards) {
         localUser.filter(item => {
           if (!(item.userName.includes(this.re_user))) {
             if (this.re_passward === this.re_passwards) {
@@ -50,8 +52,29 @@ export default {
             }          
         });
       } else {
-        alert("用户名或密码必须填写！");
+        confirm("用户名或密码必须填写！");
       }
+      //没有缓存
+      }else{
+         if (this.re_user && this.re_passward && this.re_passwards) {
+            if (this.re_passward === this.re_passwards) {
+              if(this.$store.state.checkBox.isChecked === false){
+                 alert("请勾选喵喵用户协议！");
+              }else{
+                alert("注册成功！");
+                userDate.userList.push({userName: this.re_user,userPassward: this.re_passward});
+                window.localStorage.setItem("userDate", JSON.stringify(userDate));
+                this.$router.push("/mine");
+              }
+          } else {
+            alert("两次密码不一致！请重新输入！");       
+        }
+      } else{
+        confirm("用户名或密码必须填写！");
+      }
+      }
+
+      
     }
   }
 };
