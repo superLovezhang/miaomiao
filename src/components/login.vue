@@ -1,13 +1,14 @@
 <template>
   <div class="loginBox">
-    <input type="text" placeholder="账户名/手机号/Email" v-model="user">
-    <input type="password" placeholder="请输入您的密码" v-model="passward">
+    <input type="text" placeholder="账户名/手机号/Email" v-model="lo_user">
+    <input type="password" placeholder="请输入您的密码" v-model="lo_passward">
     <div class="login">
-      <a href="javascript:;" @click="handleToLogin">登录</a>
+      <a href="javascript:;"  @click="handleToLogin">登录</a>
     </div>
     <p class="login_down">
       <router-link tag="a" to="mine/register">立即注册</router-link>
-      <a href="javascript:;">忘记密码</a>
+      <!-- <a href="javascript:;">忘记密码</a> -->
+      <router-link tag="a" to="/mine/forget">忘记密码</router-link>
     </p>
   </div>
 </template>
@@ -16,13 +17,25 @@
 export default {
   data(){
     return{
-      user:'',
-      passward:''
+      lo_user:'',
+      lo_passward:'',
+      lo_To:JSON.parse(window.localStorage.getItem('userDate')).userList
     }
   },
   methods:{
     handleToLogin(){
-      
+      this.lo_To.filter((item)=>{
+        if(item.userName === this.lo_user){
+          if(item.userPassward === this.lo_passward){
+            alert('登陆成功！');
+            this.$router.push('/admin');
+          }else{
+            alert("密码错误！")
+          }
+        }else{
+          alert("该用户名未被注册，请前往注册！")
+        }
+      })
     }
   }
 };

@@ -2,8 +2,8 @@
   <div>
     <headers/>
     <login class="logins"/>
-    <tabbar/>
     <router-view></router-view>
+    <tabbar/>
   </div>
 </template>
 

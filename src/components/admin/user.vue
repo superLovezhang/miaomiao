@@ -11,7 +11,6 @@
         <template slot-scope="scope">
           <el-button
             size="normal"
-            :type="types"
             @click="handleEdit(scope.$index, scope.row)"
             class="btn1"
           >冻结</el-button>
@@ -115,14 +114,17 @@ export default {
           zip: 200333
         }
       ],
-      pageSize:'3',
-      current:'',
+      pageSize: 3,
+      current: null
     };
   },
   created() {},
-  computed:{
-    newTable(){
-      return this.tableData.slice((this.current-1)*this.pageSize,this.pageSize*this.current);
+  computed: {
+    newTable() {
+      return this.tableData.slice(
+        (this.current - 1) * this.pageSize,
+        this.pageSize * this.current
+      );
     }
   },
   methods: {
