@@ -28,54 +28,37 @@ export default {
   },
   methods: {
     handlePassward() {
-      var userDate = { userList: [] };
-      //如果有缓存
-      if(JSON.parse(window.localStorage.getItem("userDate"))){
-        var localUser = JSON.parse(window.localStorage.getItem("userDate")).userList;
-        if (this.re_user && this.re_passward && this.re_passwards) {
-        localUser.filter(item => {
-          if (!(item.userName.includes(this.re_user))) {
-            if (this.re_passward === this.re_passwards) {
-              if(this.$store.state.checkBox.isChecked === false){
-                 alert("请勾选喵喵用户协议！");
+      var userDate = JSON.parse(window.localStorage.getItem('userDate')) || [];
+      if(this.re_user && this.re_passward && this.re_passwards){
+         if(isHasUser(this)){
+            if(this.re_passward === this.re_passwards){
+              if(this.$store.state.checkBox.isChecked){
+                 alert('注册成功！')
+                 userDate.push({ userName:this.re_user, userPassward:this.re_passward });
+                 window.localStorage.setItem('userDate',JSON.stringify(userDate));
+                 this.$router.push('/mine');
               }else{
-                alert("注册成功！");
-                userDate.userList.push({userName: this.re_user,userPassward: this.re_passward});
-                window.localStorage.setItem("userDate", JSON.stringify(userDate));
-                this.$router.push("/mine");
+                alert('请勾选喵喵用户协议')
               }
-          } else {
-            alert("两次密码不一致！请重新输入！");
-          }
             }else{
-              alert("改用户名已被注册，请重新输入！");
-            }          
-        });
-      } else {
-        confirm("用户名或密码必须填写！");
-      }
-      //没有缓存
+              alert('两次密码不一致！')
+            }
+         }else{
+           alert('该账号已注册，请重新输入！')
+         }
       }else{
-         if (this.re_user && this.re_passward && this.re_passwards) {
-            if (this.re_passward === this.re_passwards) {
-              if(this.$store.state.checkBox.isChecked === false){
-                 alert("请勾选喵喵用户协议！");
-              }else{
-                alert("注册成功！");
-                userDate.userList.push({userName: this.re_user,userPassward: this.re_passward});
-                window.localStorage.setItem("userDate", JSON.stringify(userDate));
-                this.$router.push("/mine");
-              }
-          } else {
-            alert("两次密码不一致！请重新输入！");       
-        }
-      } else{
-        confirm("用户名或密码必须填写！");
+        alert('账号或者密码必须填写！')
       }
-      }
-
-      
-    }
+      function isHasUser(a){
+        for(var i=0; i<userDate.length; i++){
+           if(userDate[i].userName === a.re_user){
+              return false;
+           }
+         }
+         return true;
+       }
+    },
+    
   }
 };
 </script>

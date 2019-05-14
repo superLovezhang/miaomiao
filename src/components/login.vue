@@ -19,23 +19,44 @@ export default {
     return{
       lo_user:'',
       lo_passward:'',
-      lo_To:JSON.parse(window.localStorage.getItem('userDate')).userList
+      
     }
   },
   methods:{
     handleToLogin(){
-      this.lo_To.filter((item)=>{
-        if(item.userName === this.lo_user){
-          if(item.userPassward === this.lo_passward){
-            alert('登陆成功！');
-            this.$router.push('/admin');
-          }else{
-            alert("密码错误！")
-          }
-        }else{
-          alert("该用户名未被注册，请前往注册！")
-        }
-      })
+      var lo_To = JSON.parse(window.localStorage.getItem('userDate')) || [];
+      if(this.lo_user && this.lo_passward){
+         if(isHasUser(this)){
+            if(isHasPassward(this)){
+               alert('登陆成功！')
+               this.$router.push('/admin')
+            }else{
+              alert('密码错误')
+            }
+         }else{
+           alert('该账号未注册，请前往注册！')
+         }
+      }else{
+        alert("账号或密码不能为空！")
+      }
+      function isHasUser(a){
+        for(var i=0; i<lo_To.length; i++){
+           if(lo_To[i].userName === a.lo_user){
+              return true;
+           }
+         }
+         return false;
+       }
+       function isHasPassward(a){
+        for(var i=0; i<lo_To.length; i++){
+           if(lo_To[i].userName === a.lo_user){
+              if(lo_To[i].userPassward === a.lo_passward){
+                return true;
+              }
+           }else{}
+         }
+         return false;
+       }
     }
   }
 };
