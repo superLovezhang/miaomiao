@@ -2,10 +2,10 @@
   <div class="forgetBox">
     <goBack></goBack>
     <div class="steps">
-      <el-steps :active="active" finish-status="success">
-        <el-step title="输入账号"></el-step>
-        <el-step title="输入新密码"></el-step>
-        <el-step title="输入"></el-step>
+      <el-steps :active="active" finish-status="success" :align-center=true >
+        <el-step title="输入账号" icon='el-icon-user'></el-step>
+        <el-step title="输入新密码" icon="el-icon-lock"></el-step>
+        <el-step title="再次输入" icon="el-icon-unlock"></el-step>
       </el-steps>
     </div>
     <el-input placeholder="请输入账号" v-model="for_user" v-if="active===0" clearable class="input1"></el-input>

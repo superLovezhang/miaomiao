@@ -18,8 +18,9 @@
             <p class="tody">{{ detailList.frt }}</p>
           </div>
         </div>
-        <div class="introduction">
+        <div class="introduction" ref="textBox">
           <p>{{ detailList.dra }}</p>
+          <div class="button_toggle" @click="toggle"><i ref="icon" class="el-icon-arrow-up"></i></div>
         </div>
         <div class="swiper-container swiper" ref="actor">
           <ul class="actor swiper-wrapper">
@@ -56,8 +57,18 @@ export default {
         });
       }
     });
-    console.log(this.id);
   },
+  methods:{
+      toggle(){
+        if(this.$refs.textBox.style.height !== '230px'){
+          this.$refs.textBox.style.height = '230px';
+          this.$refs.icon.className = 'el-icon-arrow-down';        
+        }else{
+          this.$refs.textBox.style.height = '80px';
+          this.$refs.icon.className = 'el-icon-arrow-up'; 
+        }
+      }
+  }
 };
 </script>
 
@@ -68,6 +79,7 @@ export default {
   left: 0;
   margin-bottom: 3.125rem;
   width: 100%;
+  overflow: hidden;
   height: 1800px;
   background-color: white;
   z-index: 55;
@@ -90,7 +102,7 @@ export default {
   top: 0rem;
   width: 100%;
   z-index: -1;
-  height: 14.4rem;
+  height: 13rem;
   -webkit-filter: blur(0.9rem);
   filter: blur(0.9rem);
   background-size: cover;
@@ -145,7 +157,20 @@ export default {
   margin-top: 0.4rem;
 }
 .introduction {
+  box-sizing: border-box;
+  width: 100%;
   padding: 1.25rem;
+  position: relative;
+  height: 80px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+}
+.button_toggle{
+  position: absolute;
+  bottom: 0;
+  width: 100%;
+  background-color: white;
+  text-align: center;
 }
 .swiper {
   width: 100%;
